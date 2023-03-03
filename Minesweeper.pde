@@ -48,6 +48,7 @@ public void displayLosingMessage()
 {
 
   background(0);
+  fill(255);
   textAlign(CENTER, CENTER);
   textSize(80);
   text("You lose", 0, 0, width, height/2);
@@ -55,6 +56,7 @@ public void displayLosingMessage()
 public void displayWinningMessage()
 {
   background(0);
+  fill(255);
   textAlign(CENTER, CENTER);
   textSize(80);
   text("You win", 0, 0, width, height/2);
@@ -121,6 +123,8 @@ public class MSButton
   }
   public void draw () 
   {    
+    if (gameOver)
+      return;
     if (flagged)
       fill(0);
     else if ( clicked && mines.contains(this) ) 
