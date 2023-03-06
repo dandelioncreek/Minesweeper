@@ -36,11 +36,23 @@ public void setMines()
 
 public void draw ()
 {
-  background( 0 );
+  for (int r = 0; r < NUM_ROWS; r++){
+      for (int c = 0; c < NUM_COLS; c++){
+        buttons[r][c].show();
+      }
+    }
   if (gameOver == true)
     displayLosingMessage();
   if (gameWon == true)
     displayWinningMessage();
+  if (gameOver == true || gameWon == true){
+    noStroke();
+    for (int r = 0; r < NUM_ROWS; r++){
+      for (int c = 0; c < NUM_COLS; c++){
+        buttons[r][c].clicked = true;
+      }
+    }
+  }
 }
 //public boolean isWon()
 //{
@@ -49,15 +61,17 @@ public void draw ()
 //}
 public void displayLosingMessage()
 {
-  background(71, 45, 45);//dusty rose
+  //background(71, 45, 45);//dusty rose
+  fill(0, 0, 0, 120);
+  rect(0, 0, width, height);
   fill(167, 121, 121);//dark brown-magenta
   textAlign(CENTER, CENTER);
   textSize(20);
-  text("When you're lying awake with a dismal headache and you've found you have forty cavities, I conceive you may say you regret this decay and would've rather had chocolate depravity", 0, 0, width, height);
+  text("When you're lying awake \n with a dismal headache \n and you've found \n you have forty cavities, \n I conceive you may say \n you regret this decay \n and would've rather \n had chocolate depravity", 0, 0, width, height);
 }
 public void displayWinningMessage()
 {
-  background(167, 121, 121);
+  //background(167, 121, 121);
   fill(71, 45, 45);
   textAlign(CENTER, CENTER);
   textSize(40);
@@ -144,12 +158,12 @@ public class MSButton
     //  }
     //}//trying to disable flagging for buttons that are already revealed to be not a mine
   }
-  public void draw () 
+  public void show () 
   {    
-    if (gameOver)
-      return;
-    if (gameWon)
-      return;
+    //if (gameOver)
+    //  return;
+    //if (gameWon)
+    //  return; // drawing squares over win/lose message
     if (flagged)
       fill(132, 86, 60); //medium brown
     else if ( clicked && mines.contains(this) ) 
