@@ -4,6 +4,7 @@ public final static int NUM_ROWS = 20;
 public final static int NUM_COLS = 20;//Declare and initialize constants NUM_ROWS and NUM_COLS = 20
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private boolean gameOver = false;
+private boolean gameWon = false;
 private ArrayList <MSButton> mines = new ArrayList <MSButton>(); //ArrayList of just the minesweeper buttons that are mined
 void setup ()
 {
@@ -38,12 +39,14 @@ public void draw ()
   background( 0 );
   if (gameOver == true)
     displayLosingMessage();
+  if (gameWon == true)
+    displayWinningMessage();
 }
-public boolean isWon()
-{
-  //your code here
-  return false;
-}
+//public boolean isWon()
+//{
+//  //your code here
+//  return false;
+//}
 public void displayLosingMessage()
 {
 
@@ -120,10 +123,33 @@ public class MSButton
         }
       }
     }
+    int clickCount = 0;
+    int mineFlagCount = 0;
+    for (int row = 0; row < NUM_ROWS; row++) {
+      for (int col = 0; col < NUM_COLS; col++) {
+        if (buttons[row][col].clicked == true) {
+          clickCount++;
+        }
+        if (mines.contains(buttons[row][col]) && buttons[row][col].flagged == true) {
+          mineFlagCount++;
+        }
+      }
+    }
+    if ((clickCount == NUM_ROWS*NUM_COLS)&& mineFlagCount == NUM_MINES) {
+      gameWon = true;
+    }
+    //for (int r = 0; r < NUM_ROWS; r++) {
+    //  for (int c = 0; c < NUM_COLS; c++) {
+    //    if (buttons[r][c].clicked == true && flagged == false)
+    //      flagged = false;
+    //  }
+    //}//trying to disable flagging for buttons that are already revealed to be not a mine
   }
   public void draw () 
   {    
     if (gameOver)
+      return;
+    if (gameWon)
       return;
     if (flagged)
       fill(0);
