@@ -52,8 +52,8 @@ public void displayLosingMessage()
   background(71, 45, 45);//dusty rose
   fill(167, 121, 121);//dark brown-magenta
   textAlign(CENTER, CENTER);
-  textSize(40);
-  text("Found a cavity. Be careful", 0, 0, width, height);
+  textSize(20);
+  text("When you're lying awake with a dismal headache and you've found you have forty cavities, I conceive you may say you regret this decay and would've rather had chocolate depravity", 0, 0, width, height);
 }
 public void displayWinningMessage()
 {
@@ -61,7 +61,7 @@ public void displayWinningMessage()
   fill(71, 45, 45);
   textAlign(CENTER, CENTER);
   textSize(40);
-  text("All chocolates successfully consumed with no cavities, yum!", 0, 0, width, height);
+  text("All chocolates successfully consumed, yum!", 0, 0, width, height);
 }
 
 public boolean isValid(int r, int c)
