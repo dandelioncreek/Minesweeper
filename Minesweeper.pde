@@ -49,20 +49,19 @@ public void draw ()
 //}
 public void displayLosingMessage()
 {
-
-  background(0);
-  fill(255);
+  background(71, 45, 45);//dusty rose
+  fill(167, 121, 121);//dark brown-magenta
   textAlign(CENTER, CENTER);
-  textSize(80);
-  text("You lose", 0, 0, width, height/2);
+  textSize(40);
+  text("Found a cavity. Be careful", 0, 0, width, height);
 }
 public void displayWinningMessage()
 {
-  background(0);
-  fill(255);
+  background(167, 121, 121);
+  fill(71, 45, 45);
   textAlign(CENTER, CENTER);
-  textSize(80);
-  text("You win", 0, 0, width, height/2);
+  textSize(40);
+  text("All chocolates successfully consumed with no cavities, yum!", 0, 0, width, height);
 }
 
 public boolean isValid(int r, int c)
@@ -152,13 +151,13 @@ public class MSButton
     if (gameWon)
       return;
     if (flagged)
-      fill(0);
+      fill(132, 86, 60); //medium brown
     else if ( clicked && mines.contains(this) ) 
-      fill(255, 0, 0);
+      fill(71, 45, 45); //dark brown-magenta
     else if (clicked)
-      fill( 200 );
+      fill( 209, 186, 146 );//light brown
     else 
-    fill( 100 );
+    fill( 246, 233, 210 ); //cream
 
     rect(x, y, width, height);
     fill(0);
